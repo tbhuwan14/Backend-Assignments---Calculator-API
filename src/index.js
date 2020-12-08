@@ -20,13 +20,15 @@ app.post("/add", (req, res) => {
   const num2 = Number(req.body.num2);
 
   if (isNaN(num1) || isNaN(num2)) {
-    return res.json({ status: "error", maessage: "invalid data types" });
+    return res
+      .status(400)
+      .json({ status: "error", maessage: "invalid data types" });
   }
-  if (num1 <= -1000000 || num2 <= -1000000) {
-    return res.json({ status: "error", maessage: "Underflow" });
+  if (num1 < -1000000 || num2 < -1000000) {
+    return res.status(400).json({ status: "error", maessage: "Underflow" });
   }
-  if (num1 >= 1000000 || num2 >= 1000000) {
-    return res.json({ status: "error", maessage: "Overflow" });
+  if (num1 > 1000000 || num2 > 1000000) {
+    return res.status(400).json({ status: "error", maessage: "Overflow" });
   }
 
   res.json({
@@ -41,13 +43,15 @@ app.post("/sub", (req, res) => {
   const num2 = Number(req.body.num2);
 
   if (isNaN(num1) || isNaN(num2)) {
-    return res.json({ status: "error", maessage: "invalid data types" });
+    return res
+      .status(400)
+      .json({ status: "error", maessage: "invalid data types" });
   }
-  if (num1 <= -1000000 || num2 <= -1000000) {
-    return res.json({ status: "error", maessage: "Underflow" });
+  if (num1 < -1000000 || num2 < -1000000) {
+    return res.status(400).json({ status: "error", maessage: "Underflow" });
   }
-  if (num1 >= 1000000 || num2 >= 1000000) {
-    return res.json({ status: "error", maessage: "Overflow" });
+  if (num1 > 1000000 || num2 > 1000000) {
+    return res.status(400).json({ status: "error", maessage: "Overflow" });
   }
 
   res.json({
@@ -62,13 +66,15 @@ app.post("/multiply", (req, res) => {
   const num2 = Number(req.body.num2);
 
   if (isNaN(num1) || isNaN(num2)) {
-    return res.json({ status: "error", maessage: "invalid data types" });
+    return res
+      .status(400)
+      .json({ status: "error", maessage: "invalid data types" });
   }
-  if (num1 <= -1000000 || num2 <= -1000000) {
-    return res.json({ status: "error", maessage: "Underflow" });
+  if (num1 < -1000000 || num2 < -1000000) {
+    return res.status(400).json({ status: "error", maessage: "Underflow" });
   }
-  if (num1 >= 1000000 || num2 >= 1000000) {
-    return res.json({ status: "error", maessage: "Overflow" });
+  if (num1 > 1000000 || num2 > 1000000) {
+    return res.status(400).json({ status: "error", maessage: "Overflow" });
   }
 
   res.json({
@@ -83,16 +89,20 @@ app.post("/divide", (req, res) => {
   const num2 = Number(req.body.num2);
 
   if (isNaN(num1) || isNaN(num2)) {
-    return res.json({ status: "error", maessage: "invalid data types" });
+    return res
+      .status(400)
+      .json({ status: "error", maessage: "invalid data types" });
   }
-  if (num1 <= -1000000 || num2 <= -1000000) {
-    return res.json({ status: "error", maessage: "Underflow" });
+  if (num1 < -1000000 || num2 < -1000000) {
+    return res.status(400).json({ status: "error", maessage: "Underflow" });
   }
-  if (num1 >= 1000000 || num2 >= 1000000) {
-    return res.json({ status: "error", maessage: "Overflow" });
+  if (num1 > 1000000 || num2 > 1000000) {
+    return res.status(400).json({ status: "error", maessage: "Overflow" });
   }
   if (num2 === 0) {
-    return res.json({ status: "error", maessage: "Cannot divide by zero" });
+    return res
+      .status(400)
+      .json({ status: "error", maessage: "Cannot divide by zero" });
   }
 
   res.json({
