@@ -1,5 +1,4 @@
 const express = require("express");
-const Joi = require("joi");
 const app = express();
 const bodyParser = require("body-parser");
 const port = 3000;
@@ -19,6 +18,17 @@ app.get("/", (req, res) => {
 app.post("/add", (req, res) => {
   const num1 = req.body.num1;
   const num2 = req.body.num2;
+  if (isNaN(req.body.num1) || isNaN(req.body.num2)) {
+    return res.send("invalid data types");
+  }
+
+  if (num1 <= -1000000 || num2 <= -1000000) {
+    return res.send("Underflow");
+  }
+  if (num1 >= 1000000 || num2 >= 1000000) {
+    return res.send("Overflow");
+  }
+
   res.send(
     JSON.stringify({
       status: "success" | "failure" | "error",
@@ -31,6 +41,17 @@ app.post("/add", (req, res) => {
 app.post("/sub", (req, res) => {
   const num1 = req.body.num1;
   const num2 = req.body.num2;
+  if (isNaN(req.body.num1) || isNaN(req.body.num2)) {
+    return res.send("invalid data types");
+  }
+
+  if (num1 <= -1000000 || num2 <= -1000000) {
+    return res.send("Underflow");
+  }
+  if (num1 >= 1000000 || num2 >= 1000000) {
+    return res.send("Overflow");
+  }
+
   res.send(
     JSON.stringify({
       status: "success" | "failure" | "error",
@@ -43,6 +64,17 @@ app.post("/sub", (req, res) => {
 app.post("/multiply", (req, res) => {
   const num1 = req.body.num1;
   const num2 = req.body.num2;
+  if (isNaN(req.body.num1) || isNaN(req.body.num2)) {
+    return res.send("invalid data types");
+  }
+
+  if (num1 <= -1000000 || num2 <= -1000000) {
+    return res.send("Underflow");
+  }
+  if (num1 >= 1000000 || num2 >= 1000000) {
+    return res.send("Overflow");
+  }
+
   res.send(
     JSON.stringify({
       status: "success" | "failure" | "error",
@@ -55,6 +87,9 @@ app.post("/multiply", (req, res) => {
 app.post("/divide", (req, res) => {
   const num1 = req.body.num1;
   const num2 = req.body.num2;
+  if (isNaN(req.body.num1) || isNaN(req.body.num2)) {
+    return res.send("invalid data types");
+  }
 
   if (num2 === 0) {
     return res.send("Cannot divide by zero");
