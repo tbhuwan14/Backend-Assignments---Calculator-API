@@ -15,26 +15,19 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-function checkForException(num1, num2, res) {
-  if (isNaN(num1) || isNaN(num2)) {
-    return res.send("invalid data types");
-  }
-  if (num1 <= -1000000 || num2 <= -1000000) {
-    return res.send("Underflow");
-  }
-  if (num1 >= 1000000 || num2 >= 1000000) {
-    return res.send("Overflow");
-  }
-  if (num2 === 0) {
-    return res.send("Cannot divide by zero");
-  }
-}
-
 app.post("/add", (req, res) => {
   const num1 = Number(req.body.num1);
   const num2 = Number(req.body.num2);
 
-  checkForException(num1, num2, res);
+  if (isNaN(num1) || isNaN(num2)) {
+    return res.json({ status: "error", maessage: "invalid data types" });
+  }
+  if (num1 <= -1000000 || num2 <= -1000000) {
+    return res.json({ status: "error", maessage: "Underflow" });
+  }
+  if (num1 >= 1000000 || num2 >= 1000000) {
+    return res.json({ status: "error", maessage: "Overflow" });
+  }
 
   res.json({
     status: "success" | "failure" | "error",
@@ -47,7 +40,15 @@ app.post("/sub", (req, res) => {
   const num1 = Number(req.body.num1);
   const num2 = Number(req.body.num2);
 
-  checkForException(num1, num2, res);
+  if (isNaN(num1) || isNaN(num2)) {
+    return res.json({ status: "error", maessage: "invalid data types" });
+  }
+  if (num1 <= -1000000 || num2 <= -1000000) {
+    return res.json({ status: "error", maessage: "Underflow" });
+  }
+  if (num1 >= 1000000 || num2 >= 1000000) {
+    return res.json({ status: "error", maessage: "Overflow" });
+  }
 
   res.json({
     status: "success" | "failure" | "error",
@@ -60,7 +61,15 @@ app.post("/multiply", (req, res) => {
   const num1 = Number(req.body.num1);
   const num2 = Number(req.body.num2);
 
-  checkForException(num1, num2, res);
+  if (isNaN(num1) || isNaN(num2)) {
+    return res.json({ status: "error", maessage: "invalid data types" });
+  }
+  if (num1 <= -1000000 || num2 <= -1000000) {
+    return res.json({ status: "error", maessage: "Underflow" });
+  }
+  if (num1 >= 1000000 || num2 >= 1000000) {
+    return res.json({ status: "error", maessage: "Overflow" });
+  }
 
   res.json({
     status: "success" | "failure" | "error",
@@ -73,7 +82,18 @@ app.post("/divide", (req, res) => {
   const num1 = Number(req.body.num1);
   const num2 = Number(req.body.num2);
 
-  checkForException(num1, num2, res);
+  if (isNaN(num1) || isNaN(num2)) {
+    return res.json({ status: "error", maessage: "invalid data types" });
+  }
+  if (num1 <= -1000000 || num2 <= -1000000) {
+    return res.json({ status: "error", maessage: "Underflow" });
+  }
+  if (num1 >= 1000000 || num2 >= 1000000) {
+    return res.json({ status: "error", maessage: "Overflow" });
+  }
+  if (num2 === 0) {
+    return res.json({ status: "error", maessage: "Cannot divide by zero" });
+  }
 
   res.json({
     status: "success" | "failure" | "error",
