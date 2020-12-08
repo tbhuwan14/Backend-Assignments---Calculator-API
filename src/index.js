@@ -1,4 +1,5 @@
 const express = require("express");
+const Joi = require("joi");
 const app = express();
 const bodyParser = require("body-parser");
 const port = 3000;
@@ -16,19 +17,62 @@ app.get("/", (req, res) => {
 });
 
 app.post("/add", (req, res) => {
-  req.send(req.body.sum);
+  const num1 = req.body.num1;
+  const num2 = req.body.num2;
+  res.send(
+    JSON.stringify({
+      status: "success" | "failure" | "error",
+      message: "the sum of given two numbers",
+      sum: num1 + num2,
+    })
+  );
 });
 
 app.post("/sub", (req, res) => {
-  req.send(req.body.difference);
+  const num1 = req.body.num1;
+  const num2 = req.body.num2;
+  res.send(
+    JSON.stringify({
+      status: "success" | "failure" | "error",
+      message: "the sum of given two numbers",
+      difference: num1 - num2,
+    })
+  );
 });
 
 app.post("/multiply", (req, res) => {
-  req.send(req.body.result);
+  const num1 = req.body.num1;
+  const num2 = req.body.num2;
+  res.send(
+    JSON.stringify({
+      status: "success" | "failure" | "error",
+      message: "the sum of given two numbers",
+      result: num1 * num2,
+    })
+  );
 });
 
 app.post("/divide", (req, res) => {
-  req.send(req.body.result);
+  const num1 = req.body.num1;
+  const num2 = req.body.num2;
+
+  if (num2 === 0) {
+    return res.send("Cannot divide by zero");
+  }
+  if (num1 <= -1000000 || num2 <= -1000000) {
+    return res.send("Underflow");
+  }
+  if (num1 >= 1000000 || num2 >= 1000000) {
+    return res.send("Overflow");
+  }
+
+  res.send(
+    JSON.stringify({
+      status: "success" | "failure" | "error",
+      message: "the sum of given two numbers",
+      result: num1 / num2,
+    })
+  );
 });
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
