@@ -15,17 +15,20 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
+const isNumber = (num1, num2) => isNaN(num1) || isNaN(num2);
+const isSmallerThanAsked = (num1, num2) => num1 <= -1000000 || num2 <= -1000000;
+const isGreaterThanAsked = (num1, num2) => num1 >= 1000000 || num2 >= 1000000;
+
 app.post("/add", (req, res) => {
   const num1 = req.body.num1;
   const num2 = req.body.num2;
-  if (isNaN(req.body.num1) || isNaN(req.body.num2)) {
+  if (isNumber(num1, num2)) {
     return res.send("invalid data types");
   }
-
-  if (num1 <= -1000000 || num2 <= -1000000) {
+  if (isSmallerThanAsked(num1, num2)) {
     return res.send("Underflow");
   }
-  if (num1 >= 1000000 || num2 >= 1000000) {
+  if (isGreaterThanAsked(num1, num2)) {
     return res.send("Overflow");
   }
 
@@ -41,14 +44,13 @@ app.post("/add", (req, res) => {
 app.post("/sub", (req, res) => {
   const num1 = req.body.num1;
   const num2 = req.body.num2;
-  if (isNaN(req.body.num1) || isNaN(req.body.num2)) {
+  if (isNumber(num1, num2)) {
     return res.send("invalid data types");
   }
-
-  if (num1 <= -1000000 || num2 <= -1000000) {
+  if (isSmallerThanAsked(num1, num2)) {
     return res.send("Underflow");
   }
-  if (num1 >= 1000000 || num2 >= 1000000) {
+  if (isGreaterThanAsked(num1, num2)) {
     return res.send("Overflow");
   }
 
@@ -64,14 +66,13 @@ app.post("/sub", (req, res) => {
 app.post("/multiply", (req, res) => {
   const num1 = req.body.num1;
   const num2 = req.body.num2;
-  if (isNaN(req.body.num1) || isNaN(req.body.num2)) {
+  if (isNumber(num1, num2)) {
     return res.send("invalid data types");
   }
-
-  if (num1 <= -1000000 || num2 <= -1000000) {
+  if (isSmallerThanAsked(num1, num2)) {
     return res.send("Underflow");
   }
-  if (num1 >= 1000000 || num2 >= 1000000) {
+  if (isGreaterThanAsked(num1, num2)) {
     return res.send("Overflow");
   }
 
@@ -87,17 +88,16 @@ app.post("/multiply", (req, res) => {
 app.post("/divide", (req, res) => {
   const num1 = req.body.num1;
   const num2 = req.body.num2;
-  if (isNaN(req.body.num1) || isNaN(req.body.num2)) {
+  if (isNumber(num1, num2)) {
     return res.send("invalid data types");
   }
-
-  if (num2 === 0) {
+  if (num2 == 0) {
     return res.send("Cannot divide by zero");
   }
-  if (num1 <= -1000000 || num2 <= -1000000) {
+  if (isSmallerThanAsked(num1, num2)) {
     return res.send("Underflow");
   }
-  if (num1 >= 1000000 || num2 >= 1000000) {
+  if (isGreaterThanAsked(num1, num2)) {
     return res.send("Overflow");
   }
 
