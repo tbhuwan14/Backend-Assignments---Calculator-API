@@ -16,8 +16,8 @@ app.get("/", (req, res) => {
 });
 
 app.post("/add", (req, res) => {
-  const num1 = Number(req.body.num1);
-  const num2 = Number(req.body.num2);
+  const num1 = req.body.num1;
+  const num2 = req.body.num2;
 
   if (isNaN(num1) || isNaN(num2)) {
     return res
@@ -37,8 +37,8 @@ app.post("/add", (req, res) => {
 });
 
 app.post("/sub", (req, res) => {
-  const num1 = Number(req.body.num1);
-  const num2 = Number(req.body.num2);
+  const num1 = req.body.num1;
+  const num2 = req.body.num2;
 
   if (isNaN(num1) || isNaN(num2)) {
     return res
@@ -57,8 +57,8 @@ app.post("/sub", (req, res) => {
 });
 
 app.post("/multiply", (req, res) => {
-  const num1 = Number(req.body.num1);
-  const num2 = Number(req.body.num2);
+  const num1 = req.body.num1;
+  const num2 = req.body.num2;
 
   if (isNaN(num1) || isNaN(num2)) {
     return res
@@ -77,8 +77,8 @@ app.post("/multiply", (req, res) => {
 });
 
 app.post("/divide", (req, res) => {
-  const num1 = Number(req.body.num1);
-  const num2 = Number(req.body.num2);
+  const num1 = req.body.num1;
+  const num2 = req.body.num2;
 
   if (isNaN(num1) || isNaN(num2)) {
     return res
