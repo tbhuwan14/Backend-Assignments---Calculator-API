@@ -23,19 +23,17 @@ app.post("/add", (req, res) => {
     return res
       .status(400)
       .json({ status: "error", message: "Invalid data types" });
-  }
-  if (num1 < -1000000 || num2 < -1000000) {
+  } else if (num1 < -1000000 || num2 < -1000000) {
     return res.status(400).json({ status: "error", message: "Underflow" });
-  }
-  if (num1 > 1000000 || num2 > 1000000) {
+  } else if (num1 > 1000000 || num2 > 1000000) {
     return res.status(400).json({ status: "error", message: "Overflow" });
+  } else {
+    res.json({
+      status: "success",
+      message: "the sum of given two numbers",
+      sum: num1 + num2,
+    });
   }
-
-  res.json({
-    status: "success" | "failure" | "error",
-    message: "the sum of given two numbers",
-    sum: num1 + num2,
-  });
 });
 
 app.post("/sub", (req, res) => {
@@ -46,19 +44,16 @@ app.post("/sub", (req, res) => {
     return res
       .status(400)
       .json({ status: "error", message: "Invalid data types" });
-  }
-  if (num1 < -1000000 || num2 < -1000000) {
+  } else if (num1 < -1000000 || num2 < -1000000) {
     return res.status(400).json({ status: "error", message: "Underflow" });
-  }
-  if (num1 > 1000000 || num2 > 1000000) {
+  } else if (num1 > 1000000 || num2 > 1000000) {
     return res.status(400).json({ status: "error", message: "Overflow" });
-  }
-
-  res.json({
-    status: "success" | "failure" | "error",
-    message: "the difference of given two numbers",
-    difference: num1 - num2,
-  });
+  } else
+    res.json({
+      status: "success",
+      message: "the difference of given two numbers",
+      difference: num1 - num2,
+    });
 });
 
 app.post("/multiply", (req, res) => {
@@ -69,19 +64,16 @@ app.post("/multiply", (req, res) => {
     return res
       .status(400)
       .json({ status: "error", message: "Invalid data types" });
-  }
-  if (num1 < -1000000 || num2 < -1000000) {
+  } else if (num1 < -1000000 || num2 < -1000000) {
     return res.status(400).json({ status: "error", message: "Underflow" });
-  }
-  if (num1 > 1000000 || num2 > 1000000) {
+  } else if (num1 > 1000000 || num2 > 1000000) {
     return res.status(400).json({ status: "error", message: "Overflow" });
-  }
-
-  res.json({
-    status: "success" | "failure" | "error",
-    message: "The product of given numbers",
-    result: num1 * num2,
-  });
+  } else
+    res.json({
+      status: "success",
+      message: "The product of given numbers",
+      result: num1 * num2,
+    });
 });
 
 app.post("/divide", (req, res) => {
@@ -92,24 +84,20 @@ app.post("/divide", (req, res) => {
     return res
       .status(400)
       .json({ status: "error", maessage: "Invalid data types" });
-  }
-  if (num1 < -1000000 || num2 < -1000000) {
+  } else if (num1 < -1000000 || num2 < -1000000) {
     return res.status(400).json({ status: "error", message: "Underflow" });
-  }
-  if (num1 > 1000000 || num2 > 1000000) {
+  } else if (num1 > 1000000 || num2 > 1000000) {
     return res.status(400).json({ status: "error", message: "Overflow" });
-  }
-  if (num2 === 0) {
+  } else if (num2 === 0) {
     return res
       .status(400)
       .json({ status: "error", message: "Cannot divide by zero" });
-  }
-
-  res.json({
-    status: "success" | "failure" | "error",
-    message: "The division of given numbers",
-    result: num1 / num2,
-  });
+  } else
+    res.json({
+      status: "success",
+      message: "The division of given numbers",
+      result: num1 / num2,
+    });
 });
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
